@@ -7,7 +7,7 @@ app = Flask(__name__)
 def greet(name):
     return f'Hello, {escape(name)}!'
 
-@app.route('/submit', methods=['POST','GET'])
+@app.route('/submit', methods=['POST'])
 def submit():
     username = request.form.get('username')
     return f'Hello, {username}!'
