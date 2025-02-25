@@ -1,5 +1,6 @@
-from flask import Flask
+# from flask import Flask
 from flask import render_template
+from app import User,Movie,app,db
 
 name = 'Grey Li'
 movies = [
@@ -16,10 +17,12 @@ movies = [
     {'title': 'Test', 'year':'2025'},
 ]
 
-app = Flask(__name__)
+# app = Flask(__name__)
 @app.route('/')
 def index():
-    return render_template('index.html',name=name,movies=movies)
+    user = User.query.first()
+    movies = Movie.query.all()
+    return render_template('index.html',user=user,movies=movies)
 
 if __name__ == '__main__':
     app.run(debug=True)
